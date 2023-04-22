@@ -17,7 +17,9 @@ RUN mvn clean package -Pprod -DskipTests
 # Package stage
 #
 FROM openjdk:11-jdk-slim
-COPY --from=build /target/reserva-0.0.1-SNAPSHOT.jar reserva.jar
+COPY out/artifacts/reservas_jar/reservas.jar reserva.jar
+#COPY --from=build /target/reserva-0.0.1-SNAPSHOT.jar reserva.jar
+#COPY out/artifacts/reservas_jar/reservas.jar mmit.jar
 # ENV PORT=8080
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","demo.jar"]
+ENTRYPOINT ["java","-jar","reserva.jar"]
