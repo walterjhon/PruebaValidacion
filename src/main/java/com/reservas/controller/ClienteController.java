@@ -43,6 +43,7 @@ public class ClienteController {
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
         }
+
     }
 
     @PutMapping("/editar/{id}")
