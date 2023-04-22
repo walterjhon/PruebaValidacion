@@ -4,6 +4,7 @@ import com.reservas.model.Cliente;
 import com.reservas.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,6 +13,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/cliente")
+@Validated
 public class ClienteController {
 
     @Autowired
@@ -34,7 +36,7 @@ public class ClienteController {
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<Cliente> crearCliente( @RequestBody @Valid Cliente cliente) {
+    public ResponseEntity<Cliente> crearCliente(@Valid @RequestBody Cliente cliente) {
         try {
             Cliente clienteCreado = clienteService.crearCliente(cliente);
             return ResponseEntity.ok(clienteCreado);
